@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Accueil {% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    {% endblock %}
+</head>
+<body>
+<nav>
+    <div class="nav-wrapper blue lighten-2">
+        <div class="container">
+            <a href="/" class="brand-logo">Accueil</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+{#                {{ dump(app.school) }}#}
+
+                {% if is_granted('ROLE_PARENT') %}
+
+                <li><a href="{{ path('child_show', {'id': app.user.id}) }}">Gestion enfant</a></li>
+                {% endif %}
+                {% if is_granted('ROLE_TEACHER') %}
+
+                    <li><a href="{{ path('child_index', {'id': app.user.id}) }}">Classe</a></li>
+                {% endif %}
+                {% if is_granted('ROLE_USER') %}
+
+
+                    <li><a href="{{ path('user_show', {'id': app.user.id}) }}">Profile({{ app.user.firstName }})</a></li>
+                    <li><a href="{{ path('school_index') }}">Informartion de l'école</a></li>
+
+                    <li><a href="/logout">Déconnexion</a></li>
+
+                {% else%}
+                    <li><a href="/login">Connexion</a></li>
+                    <li><a href="/register">Crée un compte</a></li>
+
+
+                {% endif %}
+
+
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li><a href=" {{ path('article_new') }}">Articles</a></li>
+                    <li><a href="{{ path('user_index') }}">Gestion Utilisateur</a></li>
+                    <li><a href="{{ path('school_index') }}">Admin école</a></li>
+
+
+
+                {% endif %}
+
+
+
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+{% block content %}
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+{% endblock %}
+</body>
+</html>

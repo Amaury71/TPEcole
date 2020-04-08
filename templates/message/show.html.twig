@@ -12,14 +12,6 @@
                 <td>{{ message.id }}</td>
             </tr>
             <tr>
-                <th>IdExpediteur</th>
-                <td>{{ message.idExpediteur }}</td>
-            </tr>
-            <tr>
-                <th>IdRecepteur</th>
-                <td>{{ message.idRecepteur }}</td>
-            </tr>
-            <tr>
                 <th>Msg</th>
                 <td>{{ message.msg }}</td>
             </tr>
@@ -32,7 +24,7 @@
 
     <a href="{{ path('message_index') }}">back to list</a>
 
-{#    <a href="{{ path('message_edit', {'id': message.id}) }}">edit</a>#}
+    <a href="{{ path('message_edit', {'id': message.id}) }}">edit</a>
 
     {{ include('message/_delete_form.html.twig') }}
 {% endblock %}

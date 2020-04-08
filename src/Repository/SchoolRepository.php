@@ -20,7 +20,7 @@ class SchoolRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return School[] Returns an array of School objects
+    //  * @return SchoolFixtures[] Returns an array of SchoolFixtures objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class SchoolRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?School
+    public function findOneBySomeField($value): ?SchoolFixtures
     {
         return $this->createQueryBuilder('s')
             ->andWhere('s.exampleField = :val')

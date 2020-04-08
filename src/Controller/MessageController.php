@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Message;
+use App\Entity\User;
 use App\Form\MessageType;
 use App\Repository\MessageRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -31,6 +32,8 @@ class MessageController extends AbstractController
     public function new(Request $request): Response
     {
         $message = new Message();
+        $message->setSendMsg($this->getUser());
+
         $form = $this->createForm(MessageType::class, $message);
         $form->handleRequest($request);
 
@@ -91,4 +94,6 @@ class MessageController extends AbstractController
 
         return $this->redirectToRoute('message_index');
     }
+
+
 }

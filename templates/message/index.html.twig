@@ -9,8 +9,6 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>IdExpediteur</th>
-                <th>IdRecepteur</th>
                 <th>Msg</th>
                 <th>DateEnvoie</th>
                 <th>actions</th>
@@ -20,18 +18,16 @@
         {% for message in messages %}
             <tr>
                 <td>{{ message.id }}</td>
-                <td>{{ message.idExpediteur }}</td>
-                <td>{{ message.idRecepteur }}</td>
                 <td>{{ message.msg }}</td>
-{#                <td>{{ message.DateEnvoie ? message.DateEnvoie|date('Y-m-d H:i:s') : '' }}</td>#}
+                <td>{{ message.DateEnvoie ? message.DateEnvoie|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a href="{{ path('message_show', {'id': message.id}) }}">show</a>
-{#                    <a href="{{ path('message_edit', {'id': message.id}) }}">edit</a>#}
+                    <a href="{{ path('message_edit', {'id': message.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="4">no records found</td>
             </tr>
         {% endfor %}
         </tbody>

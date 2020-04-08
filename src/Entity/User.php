@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -47,6 +49,30 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      */
     private $tel;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Child", mappedBy="User", orphanRemoval=true)
+     */
+    private $children;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Message", mappedBy="sendMsg")
+     */
+    private $sendMsg;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Message", mappedBy="receiveMsg")
+     */
+    private $receiveMsg;
+
+
+
+    public function __construct()
+    {
+        $this->children = new ArrayCollection();
+        $this->sendMsg = new ArrayCollection();
+        $this->receiveMsg = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -161,4 +187,104 @@ class User implements UserInterface
 
         return $this;
     }
+
+    /**
+     * @return Collection|Child[]
+     */
+    public function getChildren(): Collection
+    {
+        return $this->children;
+    }
+
+    public function addChild(Child $child): self
+    {
+        if (!$this->children->contains($child)) {
+            $this->children[] = $child;
+            $child->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeChild(Child $child): self
+    {
+        if ($this->children->contains($child)) {
+            $this->children->removeElement($child);
+            // set the owning side to null (unless already changed)
+            if ($child->getUser() === $this) {
+                $child->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getLastName() ;
+
+    }
+
+    /**
+     * @return Collection|Message[]
+     */
+    public function getSendMsg(): Collection
+    {
+        return $this->sendMsg;
+    }
+
+    public function addSendMsg(Message $sendMsg): self
+    {
+        if (!$this->sendMsg->contains($sendMsg)) {
+            $this->sendMsg[] = $sendMsg;
+            $sendMsg->setSendMsg($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSendMsg(Message $sendMsg): self
+    {
+        if ($this->sendMsg->contains($sendMsg)) {
+            $this->sendMsg->removeElement($sendMsg);
+            // set the owning side to null (unless already changed)
+            if ($sendMsg->getSendMsg() === $this) {
+                $sendMsg->setSendMsg(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Message[]
+     */
+    public function getReceiveMsg(): Collection
+    {
+        return $this->receiveMsg;
+    }
+
+    public function addReceiveMsg(Message $receiveMsg): self
+    {
+        if (!$this->receiveMsg->contains($receiveMsg)) {
+            $this->receiveMsg[] = $receiveMsg;
+            $receiveMsg->setReceiveMsg($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReceiveMsg(Message $receiveMsg): self
+    {
+        if ($this->receiveMsg->contains($receiveMsg)) {
+            $this->receiveMsg->removeElement($receiveMsg);
+            // set the owning side to null (unless already changed)
+            if ($receiveMsg->getReceiveMsg() === $this) {
+                $receiveMsg->setReceiveMsg(null);
+            }
+        }
+
+        return $this;
+    }
+
 }

@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -17,14 +19,15 @@ class Message
     private $id;
 
     /**
-     * @ORM\Column(type="decimal", precision=10, scale=0)
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="sendMsg")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $idExpediteur;
+    private $sendMsg;
 
     /**
-     * @ORM\Column(type="decimal", precision=10, scale=0)
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="receiveMsg")
      */
-    private $idRecepteur;
+    private $receiveMsg;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -41,51 +44,50 @@ class Message
     public function __construct()
     {
        $this->DateEnvoie=new \DateTime();
-
     }
-
-
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getIdExpediteur(): ?string
+    public function getSendMsg(): ?User
     {
-        return $this->idExpediteur;
+        return $this->sendMsg;
     }
 
-    public function setIdExpediteur(string $idExpediteur): self
+    public function setSendMsg(?User $sendMsg): self
     {
-        $this->idExpediteur = $idExpediteur;
+        $this->sendMsg = $sendMsg;
 
         return $this;
     }
 
-    public function getIdRecepteur(): ?string
+    public function getReceiveMsg(): ?User
     {
-        return $this->idRecepteur;
+        return $this->receiveMsg;
     }
 
-    public function setIdRecepteur(string $idRecepteur): self
+    public function setReceiveMsg(?User $receiveMsg): self
     {
-        $this->idRecepteur = $idRecepteur;
+        $this->receiveMsg = $receiveMsg;
 
         return $this;
     }
 
-    public function getMsg(): ?string
+
+    public function getMsg()
     {
         return $this->msg;
     }
 
-    public function setMsg(string $msg): self
+
+    public function setMsg($msg): void
     {
         $this->msg = $msg;
-
-        return $this;
     }
+
+
 
     public function getDateEnvoie(): ?\DateTimeInterface
     {
@@ -98,4 +100,20 @@ class Message
 
         return $this;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

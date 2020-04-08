@@ -3,7 +3,9 @@
 {% block title %}S'identifier {% endblock %}
 
 {% block body %}
-<form method="post">
+    {% include('navbar.html.twig') %}
+
+    <form method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
@@ -39,4 +41,5 @@
         se connecter
     </button>
 </form>
-{% endblock %}
+
+    {% endblock %}

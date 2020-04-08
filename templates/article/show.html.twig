@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article{% endblock %}
+
+{% block body %}
+    <h1>Article</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ article.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ article.Title }}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{ article.Content }}</td>
+            </tr>
+            <tr>
+                <th>DateAdd</th>
+                <td>{{ article.dateAdd ? article.dateAdd|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>FileName</th>
+                <td>{{ article.fileName }}</td>
+            </tr>
+            <tr>
+                {% if article.fileName %}
+                <td><img src="{{ vich_uploader_asset(article, 'imageFile') }}" alt="" style="width:500px; height:auto;"></td>
+                {% endif %}
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('article_index') }}">back to list</a>
+
+    <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
+
+    {{ include('article/_delete_form.html.twig') }}
+{% endblock %}

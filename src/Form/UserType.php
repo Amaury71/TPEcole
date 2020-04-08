@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 class UserType extends AbstractType
 {
@@ -25,9 +26,13 @@ class UserType extends AbstractType
 //                    'Admin'         => 'ROLE_ADMIN',
                     'Parent'        => 'ROLE_PARENT',
                     'Professeur'    => 'ROLE_TEACHER'
+
                 ],
-                'multiple' => true,
+
                 'expanded' => true,
+                'multiple' => true,
+                'required' => true,
+
             ])
 
             ->add('password', RepeatedType::class, [
@@ -41,6 +46,7 @@ class UserType extends AbstractType
             ->add('last_name', TextType::class, array('required' => true))
             ->add('first_name', TextType::class, array('required' => true))
             ->add('tel',TelType::class)
+
         ;
     }
 

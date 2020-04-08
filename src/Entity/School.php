@@ -30,11 +30,22 @@ class School
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $tel;
+    public function __construct()
+    {
+    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
+
+//    /**
+//     * @param mixed $id
+//     */
+//    public function setId($id): void
+//    {
+//        $this->id = $id;
+//    }
 
     public function getName(): ?string
     {

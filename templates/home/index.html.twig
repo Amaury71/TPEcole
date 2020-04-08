@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil {% endblock %}
+
+{% block body %}
+    {% include('navbar.html.twig') %}
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Content</th>
+            <th>DateAdd</th>
+            <th>FileName</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <td>{{ article.id }}</td>
+                <td>{{ article.Title }}</td>
+                <td>{{ article.Content }}</td>
+                <td>{{ article.dateAdd ? article.dateAdd|date('Y-m-d H:i:s') : '' }}</td>
+                {% if article.fileName %}
+                    <td><img src="{{ vich_uploader_asset(article, 'imageFile') }}" alt="" style="width:500px; height:auto;"></td>
+                {% endif %}
+                <td>
+                    <a href="{{ path('article_show', {'id': article.id}) }}">show</a>
+{#                    <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>#}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}
