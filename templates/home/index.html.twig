@@ -5,10 +5,9 @@
 
 {% block body %}
     {% include('navbar.html.twig') %}
-
     {% for article in articles %}
-    <div class="col s12 m7 articleecole">
-        <h2 class="header titrearticle">{{article.Title}}</h2>
+    <div class="col s12 m7 blue-grey darken-2 articleecole">
+        <h2 class="header titrearticle ">{{article.Title}}</h2>
         <div class="card horizontal">
             <div class="card-image">
                 {% if article.fileName %}
@@ -19,11 +18,11 @@
                 <div class="card-content">
                     <div class="row">
                         <div class="datecontent">
-                            <p>Cet article à été crée le <b>{{ article.dateAdd ? article.dateAdd|date('Y-m-d H:i:s') : '' }}</b></p>
+                            <p>Cet article a été crée le <b>{{ article.dateAdd ? article.dateAdd|date('Y-m-d H:i:s') : '' }}</b></p>
                         </div>
                     </div>
                     <div class="articlecontent">
-                        {{ article.Content }}
+                        {{ article.Content | striptags | slice(0,20) | raw}} ...
                     </div>
                 </div>
                 <div class="card-action">
