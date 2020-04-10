@@ -1,0 +1,74 @@
+
+[type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+    position: relative;
+    opacity: 1;
+    pointer-events: visible;
+}
+
+
+select {
+    display: initial;
+}
+
+img.imagearticle {
+    height: auto;
+    width: auto;
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.imageshowarticle {
+    text-align: center;
+}
+
+#article {
+    width:80%;
+    margin: auto;
+}
+
+#contenuarticle {
+    border-radius: 10px;
+}
+
+div.articleecole {
+    width: 60%;
+    margin: auto;
+    background-color: white;
+    border-radius: 10px;
+}
+
+div.formulairecompte {
+    width: 70%;
+    margin: auto;
+}
+
+.contenuformulaire {
+    border-radius: 10px;
+}
+
+div.formulaireconnexion {
+    width: 60%;
+    margin:auto;
+}
+
+.contenuconnexion {
+    border-radius: 10px;
+}
+.datecontent {
+    text-align: right;
+}
+
+.datearticle {
+    text-align: right;
+}
+
+.titrearticle {
+    text-align: center;
+    font-size: 30px;
+}
+
+body {
+    color:black;
+    background-color:white;
+    background-image:url(../images/fond/ecole.jpg);
+}
