@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PhotoClass{% endblock %}
+
+{% block body %}
+    <h1>PhotoClass</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ photo_class.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ photo_class.name }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ photo_class.date }}</td>
+            </tr>
+            <tr>
+                <th>FileName</th>
+                <td>{{ photo_class.fileName }}</td>
+            </tr>
+            <tr>
+                {% if photo_class.fileName %}
+                    <td><img src="{{ vich_uploader_asset(photo_class, 'imageFile') }}" alt="" style="width:500px; height:auto;"></td>
+                {% endif %}
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('photo_class_index') }}">back to list</a>
+
+    <a href="{{ path('photo_class_edit', {'id': photo_class.id}) }}">edit</a>
+
+    {{ include('photo_class/_delete_form.html.twig') }}
+{% endblock %}
