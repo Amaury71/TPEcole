@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{% block title %}Accueil {% endblock %}</title>
+    <title>{% block title %}Accueil{% endblock %}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -30,31 +30,23 @@
                 {% if is_granted('ROLE_USER') %}
 
 
-                    <li><a href="{{ path('user_show', {'id': app.user.id}) }}">Profile({{ app.user.firstName }})</a></li>
-                    <li><a href="{{ path('school_index') }}">Informartion de l'école</a></li>
+                    <li><a href="{{ path('user_show', {'id': app.user.id}) }}">Profil({{ app.user.firstName }})</a></li>
+                    <li><a href="{{ path('school_index') }}">Informations de l'école</a></li>
 
                     <li><a href="/logout">Déconnexion</a></li>
 
                 {% else%}
                     <li><a href="/login">Connexion</a></li>
-                    <li><a href="/register">Crée un compte</a></li>
+                    <li><a href="/register">Créer un compte</a></li>
 
 
                 {% endif %}
-
 
                 {% if is_granted('ROLE_ADMIN') %}
                     <li><a href=" {{ path('article_new') }}">Articles</a></li>
-                    <li><a href="{{ path('user_index') }}">Gestion Utilisateur</a></li>
+                    <li><a href="{{ path('user_index') }}">Gestion utilisateur</a></li>
                     <li><a href="{{ path('school_index') }}">Admin école</a></li>
-
-
-
                 {% endif %}
-
-
-
-
             </ul>
         </div>
     </div>

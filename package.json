@@ -14,7 +14,12 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "composer": "^4.1.0",
+        "materialize-css": "^1.0.0-rc.2",
         "package-lock": "^1.0.2",
-        "package-lock.json": "^1.0.0"
+        "package-lock.json": "^1.0.0",
+        "require": "^2.4.20",
+        "symfony": "0.0.1",
+        "yarn": "^1.22.4"
     }
 }

@@ -12,12 +12,12 @@
         <tbody>
         {% for school in schools %}
             <tr>
-            <tr><th>Name</th><td>{{ school.name }}</td></tr>
-            <tr><th>Adrs</th><td>{{ school.adrs }}</td> </tr>
-            <tr><th>Tel</th><td>{{ school.tel }}</td> </tr>
+            <tr><th>Nom de l'école</th><td>{{ school.name }}</td></tr>
+            <tr><th>Adresse</th><td>{{ school.adrs }}</td> </tr>
+            <tr><th>Téléphone</th><td>{{ school.tel }}</td> </tr>
             {% if is_granted('ROLE_ADMIN') %}
                 <td>
-                    <a href="{{ path('school_edit', {'id': school.id}) }}">edit</a>
+                    <a href="{{ path('school_edit', {'id': school.id}) }}">Modifier</a>
                 </td>
             {% endif %}
             </tr>
