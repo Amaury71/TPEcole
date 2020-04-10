@@ -13,10 +13,15 @@
                 <th>Age : </th>
                 <th>Classe :</th>
                 <th>Date Inscription :</th>
+                <th>Inscription validé ?</th>
+                <th>Photo de photoClass</th>
+
 
         </tr>
 
     {% for child  in child %}
+        {{ dump(child) }}
+
         <tr>
          <th>Enfant :</th>
         <td>{{ child.lastName }}</td>
@@ -24,6 +29,14 @@
         <td>{{ child.age }}</td>
         <td>{{ child.class }}</td>
         <td>{{ child.dateAdd|date("m/d/Y  -  H:i")  }}</td>
+         {% if (child.validationInscription== false) %}
+        <td>En cours </td>
+         {% else %}
+         <td>Oui </td>
+         {% endif %}
+            <td>{{ child.photoClass }}</td>
+
+
 
 
         </tr>
