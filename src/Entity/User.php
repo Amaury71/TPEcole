@@ -65,6 +65,11 @@ class User implements UserInterface
      */
     private $receiveMsg;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\CorrespondenceBook", mappedBy="nomProf", orphanRemoval=true)
+     */
+    private $correspondenceBooks;
+
 
 
     public function __construct()
@@ -72,6 +77,7 @@ class User implements UserInterface
         $this->children = new ArrayCollection();
         $this->sendMsg = new ArrayCollection();
         $this->receiveMsg = new ArrayCollection();
+        $this->correspondenceBooks = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -281,6 +287,37 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($receiveMsg->getReceiveMsg() === $this) {
                 $receiveMsg->setReceiveMsg(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CorrespondenceBook[]
+     */
+    public function getCorrespondenceBooks(): Collection
+    {
+        return $this->correspondenceBooks;
+    }
+
+    public function addCorrespondenceBook(CorrespondenceBook $correspondenceBook): self
+    {
+        if (!$this->correspondenceBooks->contains($correspondenceBook)) {
+            $this->correspondenceBooks[] = $correspondenceBook;
+            $correspondenceBook->setNomProf($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCorrespondenceBook(CorrespondenceBook $correspondenceBook): self
+    {
+        if ($this->correspondenceBooks->contains($correspondenceBook)) {
+            $this->correspondenceBooks->removeElement($correspondenceBook);
+            // set the owning side to null (unless already changed)
+            if ($correspondenceBook->getNomProf() === $this) {
+                $correspondenceBook->setNomProf(null);
             }
         }
 

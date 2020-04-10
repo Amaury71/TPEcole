@@ -1,4 +1,24 @@
+
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+    {{ form_row(form.last_name) }}
+    {{ form_row(form.first_name) }}
+    {{ form_row(form.age) }}
+    {{ form_row(form.class) }}
+{#    {{ form_row(form.PhotoClass) }}#}
+
+
+{% if is_granted('ROLE_PARENT') %}
+    {% do form.validationInscription.setRendered() %}
+{% endif %}
+
+{% if is_granted('ROLE_TEACHER') %}
+    {% do form.validationInscription.setRendered() %}
+{% endif %}
     <button class="btn">{{ button_label|default('Save') }}</button>
+
+
 {{ form_end(form) }}
+
+
+
+

@@ -47,9 +47,23 @@ class Child
      */
     private $class;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $validationInscription;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\PhotoClass", inversedBy="children")
+     */
+    private $photoClass;
+
+
+
     public function __construct()
     {
         $this->dateAdd=new \DateTime();
+        $this->validationInscription=false;
+
     }
 
     public function getId(): ?int
@@ -129,4 +143,34 @@ class Child
 
         return $this;
     }
+
+    public function getValidationInscription(): ?bool
+    {
+        return $this->validationInscription;
+    }
+
+    public function setValidationInscription(bool $validationInscription): self
+    {
+        $this->validationInscription = $validationInscription;
+
+        return $this;
+    }
+
+    public function getPhotoClass(): ?PhotoClass
+    {
+        return $this->photoClass;
+    }
+
+    public function setPhotoClass(?PhotoClass $photoClass): self
+    {
+        $this->photoClass = $photoClass;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getFirstName() ;
+    }
+
 }
