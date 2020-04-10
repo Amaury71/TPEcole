@@ -19,7 +19,7 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email', EmailType::class)
+            ->add('email', EmailType::class, array('label' => 'Adresse e-mail'))
             ->add('roles', ChoiceType::class, [
                 'choices' => [
 //                    'Utilisateur'   => 'ROLE_USER',
@@ -37,15 +37,15 @@ class UserType extends AbstractType
 
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
-                'invalid_message' => 'The password fields must match.',
+                'invalid_message' => 'Les deux champs doivent être identiques.',
                 'options' => ['attr' => ['class' => 'password-field']],
                 'required' => true,
-                'first_options'  => ['label' => 'Password'],
-                'second_options' => ['label' => 'Repeat Password'],
+                'first_options'  => ['label' => 'Mot de passe'],
+                'second_options' => ['label' => 'Réecrivez le mot de passe'],
             ])
-            ->add('last_name', TextType::class, array('required' => true))
-            ->add('first_name', TextType::class, array('required' => true))
-            ->add('tel',TelType::class)
+            ->add('last_name', TextType::class, array('required' => true,'label' => 'Nom'))
+            ->add('first_name', TextType::class, array('required' => true, 'label' => 'Prénom'))
+            ->add('tel',TelType::class, array('label' => 'Téléphone'))
 
         ;
     }

@@ -4,10 +4,22 @@
 
 {% block body %}
     {% include('navbar.html.twig') %}
+    <div class="row">
+        <div class="formulairecompte">
+            <div class="card blue-grey darken-2 contenuformulaire">
+                <div class="card-content white-text">
+                    <h2 class="header titrearticle">Création du compte</h2>
+                    {{ include('user/_form.html.twig') }}
+                </div>
+                <div class="card-action">
+                    <a href="{{ path('user_index') }}">Retour</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <h1>Créer un utilisateur</h1>
 
-    {{ include('user/_form.html.twig') }}
 
-    <a href="{{ path('user_index') }}">Retour</a>
+
+
 {% endblock %}
