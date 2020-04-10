@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Utilisateur
-{% endblock %}
+{% block title %}Utilisateur{% endblock %}
 
 {% block body %}
     {% include('navbar.html.twig') %}
@@ -18,35 +17,32 @@
                 <td>{{ user.firstname }}</td>
             </tr>
             <tr>
-                <th>Email</th>
+                <th>Email :</th>
                 <td>{{ user.email }}</td>
             </tr>
             <tr>
-                <th>Téléphone </th>
+                <th>Téléphone :</th>
                 <td>{{ user.tel }}</td>
             </tr>
             <tr>
-                <th>Role </th>
+                <th>Role :</th>
                 <td>{% if is_granted('ROLE_TEACHER') %}
                         Professeur
-
                     {% endif %}
                     {% if is_granted('ROLE_PARENT') %}
                         Parent
                     {% endif %}
                     {% if is_granted('ROLE_ADMIN') %}
                         Administrateur
-                    {% endif %}</td>
+                    {% endif %}
+                </td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('home') }}">back to list</a>
+    <a href="{{ path('home') }}">Retour</a>
 
-    <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
-
-
-
-
+    <a href="{{ path('user_edit', {'id': user.id}) }}">Modifier</a>
+    
     {{ include('user/_delete_form.html.twig') }}
 {% endblock %}

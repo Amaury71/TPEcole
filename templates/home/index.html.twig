@@ -1,3 +1,4 @@
+
 {% extends 'base.html.twig' %}
 
 {% block title %}Accueil {% endblock %}
@@ -5,39 +6,32 @@
 {% block body %}
     {% include('navbar.html.twig') %}
 
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Title</th>
-            <th>Content</th>
-            <th>DateAdd</th>
-            <th>FileName</th>
-            <th>actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for article in articles %}
-            <tr>
-                <td>{{ article.id }}</td>
-                <td>{{ article.Title }}</td>
-                <td>{{ article.Content }}</td>
-                <td>{{ article.dateAdd ? article.dateAdd|date('Y-m-d H:i:s') : '' }}</td>
+    {% for article in articles %}
+    <div class="col s12 m7 articleecole">
+        <h2 class="header titrearticle">{{article.Title}}</h2>
+        <div class="card horizontal">
+            <div class="card-image">
                 {% if article.fileName %}
-                    <td><img src="{{ vich_uploader_asset(article, 'imageFile') }}" alt="" style="width:500px; height:auto;"></td>
+                    <img class="imagearticle" src="{{ vich_uploader_asset(article, 'imageFile') }}" alt="Image de l'article">
                 {% endif %}
-                <td>
-                    <a href="{{ path('article_show', {'id': article.id}) }}">show</a>
-{#                    <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>#}
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-
+            </div>
+            <div class="card-stacked">
+                <div class="card-content">
+                    <div class="row">
+                        <div class="datecontent">
+                            <p>Cet article à été crée le <b>{{ article.dateAdd ? article.dateAdd|date('Y-m-d H:i:s') : '' }}</b></p>
+                        </div>
+                    </div>
+                    <div class="articlecontent">
+                        {{ article.Content }}
+                    </div>
+                </div>
+                <div class="card-action">
+                    <a href="{{ path('article_show', {'id': article.id}) }}">Voir l'article</a>
+                    {#                    <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>#}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
 {% endblock %}

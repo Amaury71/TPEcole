@@ -1,19 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Article index{% endblock %}
+{% block title %}Index de l'article{% endblock %}
 
 {% block body %}
-    <h1>Article index</h1>
+    <h1>Index de l'article</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Title</th>
-                <th>Content</th>
-                <th>DateAdd</th>
-                <th>FileName</th>
-                <th>actions</th>
+                <th>Titre</th>
+                <th>Contenu</th>
+                <th>Date d'ajout</th>
+                <th>Fichier</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -39,5 +39,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('article_new') }}">Create new</a>
+    <a href="{{ path('article_new') }}">Créer un nouveau</a>
 {% endblock %}
