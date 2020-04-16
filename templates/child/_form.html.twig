@@ -1,10 +1,13 @@
 
+<link rel="stylesheet" href="/build/app.css">
+
+
 {{ form_start(form) }}
     {{ form_row(form.last_name) }}
     {{ form_row(form.first_name) }}
     {{ form_row(form.age) }}
     {{ form_row(form.class) }}
-{#    {{ form_row(form.PhotoClass) }}#}
+
 
 
 {% if is_granted('ROLE_PARENT') %}

@@ -20,7 +20,6 @@
         </tr>
 
     {% for child  in child %}
-        {{ dump(child) }}
 
         <tr>
          <th>Enfant :</th>
@@ -34,10 +33,13 @@
          {% else %}
          <td>Oui </td>
          {% endif %}
-            <td>{{ child.photoClass }}</td>
+            {% if child.photoClass == '' %}
+                <td>Pas de photo de classe disponnilbe</td>
 
+            {% else %}
+                    <td><img src="{{ vich_uploader_asset(child.photoClass, 'imageFile') }}" alt="" style="width:500px; height:auto;"></td>
 
-
+            {% endif %}
 
         </tr>
     {% endfor %}

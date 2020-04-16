@@ -3,6 +3,8 @@
 {% block title %}PhotoClass index{% endblock %}
 
 {% block body %}
+    {% include('navbar.html.twig') %}
+
     <h1>PhotoClass index</h1>
 
     <table class="table">
@@ -17,7 +19,6 @@
         </thead>
         <tbody>
         {% for photo_class in photo_classes %}
-            {{ dump(photo_class) }}
 
             <tr>
                 <td>{{ photo_class.id }}</td>

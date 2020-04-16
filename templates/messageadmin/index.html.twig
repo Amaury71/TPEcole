@@ -3,6 +3,8 @@
 {% block title %}Message index{% endblock %}
 
 {% block body %}
+    {% include('navbar.html.twig') %}
+
     <h1>Message index</h1>
 
     <table class="table">
@@ -22,7 +24,7 @@
                 <td>{{ message.DateEnvoie ? message.DateEnvoie|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a href="{{ path('messageadmin_show', {'id': message.id}) }}">show</a>
-                    <a href="{{ path('messageadmin', {'id': message.id}) }}">edit</a>
+                    <a href="{{ path('messageadmin_index', {'id': message.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
