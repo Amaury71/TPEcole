@@ -1,4 +1,7 @@
 
+/*body{}*/
+
+
 [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
     position: relative;
     opacity: 1;
@@ -8,6 +11,7 @@
 
 select {
     display: initial;
+
 }
 
 img.imagearticle {
@@ -69,6 +73,13 @@ div.formulaireconnexion {
 
 body {
     color:black;
+
     background-color:white;
     background-image:url(../images/fond/ecole.jpg);
 }
+
+   /* background-color:#E1F5FE;*/
+    /*background-image:url(../images/fond/ecole.jpg);*/
+
+}
+

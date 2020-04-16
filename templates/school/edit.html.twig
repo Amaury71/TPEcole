@@ -3,6 +3,8 @@
 {% block title %}Edit School{% endblock %}
 
 {% block body %}
+    {% include('navbar.html.twig') %}
+
     <h1>Edit School</h1>
 
     {{ include('school/_form.html.twig', {'button_label': 'Update'}) }}

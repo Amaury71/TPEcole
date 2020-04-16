@@ -3,6 +3,8 @@
 {% block title %}New PhotoClass{% endblock %}
 
 {% block body %}
+    {% include('navbar.html.twig') %}
+
     <h1>Créer une nouvelle photo de classe</h1>
 
     {{ include('photo_class/_form.html.twig') }}

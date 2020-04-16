@@ -17,13 +17,15 @@
             <a href="/" class="brand-logo">Accueil</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
 
-{#                {{ dump(app.school) }}#}
 
                 {% if is_granted('ROLE_PARENT') %}
+                    <li><a href=" {{ path('message_index') }}">Messages</a></li>
 
-                <li><a href="{{ path('child_show', {'id': app.user.id}) }}">Gestion enfant</a></li>
+                    <li><a href="{{ path('child_show', {'id': app.user.id}) }}">Gestion enfant</a></li>
                 {% endif %}
                 {% if is_granted('ROLE_TEACHER') %}
+                    <li><a href=" {{ path('message_index') }}">Messages</a></li>
+
 
                     <li><a href="{{ path('child_index', {'id': app.user.id}) }}">Classe</a></li>
                 {% endif %}
@@ -33,7 +35,7 @@
                     <li><a href="{{ path('user_show', {'id': app.user.id}) }}">Profil({{ app.user.firstName }})</a></li>
                     <li><a href="{{ path('school_index') }}">Informations de l'école</a></li>
 
-                    <li><a href="/logout">Déconnexion</a></li>
+
 
                 {% else%}
                     <li><a href="/login">Connexion</a></li>
@@ -43,10 +45,14 @@
                 {% endif %}
 
                 {% if is_granted('ROLE_ADMIN') %}
+                    <li><a href="{{ path('child_index', {'id': app.user.id}) }}">Gestion des enfants</a></li>
+
                     <li><a href=" {{ path('article_new') }}">Articles</a></li>
                     <li><a href="{{ path('user_index') }}">Gestion utilisateur</a></li>
-                    <li><a href="{{ path('school_index') }}">Admin école</a></li>
+                    <li><a href=" {{ path('messageadmin_index') }}">Messages</a></li>
                 {% endif %}
+                <li><a href="/logout">Déconnexion</a></li>
+
             </ul>
         </div>
     </div>
