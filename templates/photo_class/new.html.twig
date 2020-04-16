@@ -4,7 +4,10 @@
 
 {% block body %}
     {% include('navbar.html.twig') %}
-    <h1>Create new PhotoClass</h1>
+
+    <h1>Créer une nouvelle photo de classe</h1>
+
     {{ include('photo_class/_form.html.twig') }}
-    <a href="{{ path('photo_class_index') }}">back to list</a>
+
+    <a href="{{ path('photo_class_index') }}">Retour</a>
 {% endblock %}

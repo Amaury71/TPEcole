@@ -5,13 +5,10 @@
 {% block body %}
     {% include('navbar.html.twig') %}
 
-    <h1>Child index</h1>
-
-
+    <h1>Les enfants</h1>
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Nom </th>
                 <th>Prénom</th>
                 <th>Age</th>
@@ -25,8 +22,8 @@
         </thead>
         <tbody>
         {% for child in children %}
+        <div id="article" class="card blue-grey">
             <tr>
-                <td>{{ child.id }}</td>
                 <td>{{ child.lastName }}</td>
                 <td>{{ child.firstName }}</td>
                 <td>{{ child.age }}</td>
@@ -42,6 +39,7 @@
                     <a href="{{ path('child_edit', {'id': child.id}) }}">edit</a>
                 </td>
             </tr>
+        </div>
         {% else %}
             <tr>
                 <td colspan="6">no records found</td>
@@ -50,5 +48,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('child_new') }}">Create new</a>
+    <a href="{{ path('child_new') }}">Créer un nouvel enfant</a>
 {% endblock %}
