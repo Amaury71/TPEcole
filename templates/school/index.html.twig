@@ -5,27 +5,37 @@
 {% block body %}
     {% include('navbar.html.twig') %}
 
-    <h1>School index</h1>
 
-    <table class="table">
+    <div class="listeecole">
+        <div class="card blue-grey contenulisteecole">
+            <div class="card-content white-text">
+                <h2 class="header titreecole">Liste des écoles</h2>
+                {% for school in schools %}
+                <table class="tableecole">
+                    <div class="card blue-grey">
+                        <tr><th>Nom de l'école</th><td>{{ school.name }}</td></tr>
+                        <tr><th>Adresse</th><td>{{ school.adrs }}</td> </tr>
+                        <tr><th>Téléphone</th><td>{{ school.tel }}</td> </tr>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <td>
+                                <a href="{{ path('school_edit', {'id': school.id}) }}">Modifier</a>
+                            </td>
+                        {% endif %}
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="5">no records found</td>
+                        </tr>
+                    {% endfor %}
+                </div>
+            </tbody>
+            </table>
+            </div>
+            <div class="card-action">
+                <a href="{{ path('user_index') }}">Retour</a>
+            </div>
+        </div>
+    </div>
 
-        <tbody>
-        {% for school in schools %}
-            <tr>
-            <tr><th>Nom de l'école</th><td>{{ school.name }}</td></tr>
-            <tr><th>Adresse</th><td>{{ school.adrs }}</td> </tr>
-            <tr><th>Téléphone</th><td>{{ school.tel }}</td> </tr>
-            {% if is_granted('ROLE_ADMIN') %}
-                <td>
-                    <a href="{{ path('school_edit', {'id': school.id}) }}">Modifier</a>
-                </td>
-            {% endif %}
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+
 {% endblock %}

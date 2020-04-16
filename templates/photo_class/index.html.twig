@@ -3,41 +3,44 @@
 {% block title %}PhotoClass index{% endblock %}
 
 {% block body %}
-    <h1>PhotoClass index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Date</th>
-                <th>FileName</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for photo_class in photo_classes %}
-            {{ dump(photo_class) }}
+<div class="listeecole">
+    <div class="card blue-grey">
+        <div class="card-content white-text">
+            <h2 class="header titrephotodeclasse">Photo de classe</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>FileName</th>
+                        <th>actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for photo_class in photo_classes %}
+                    {{ dump(photo_class) }}
 
-            <tr>
-                <td>{{ photo_class.id }}</td>
-                <td>{{ photo_class.name }}</td>
-                <td>{{ photo_class.date }}</td>
-                {% if photo_class.fileName %}
-                    <td><img src="{{ vich_uploader_asset(photo_class, 'imageFile') }}" alt="" style="width:500px; height:auto;"></td>
-                {% endif %}
-                <td>
-                    <a href="{{ path('photo_class_show', {'id': photo_class.id}) }}">show</a>
-                    <a href="{{ path('photo_class_edit', {'id': photo_class.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('photo_class_new') }}">Create new</a>
+                    <tr>
+                        <td>{{ photo_class.name }}</td>
+                        <td>{{ photo_class.date }}</td>
+                        {% if photo_class.fileName %}
+                            <td><img src="{{ vich_uploader_asset(photo_class, 'imageFile') }}" alt="" style="width:500px; height:auto;"></td>
+                        {% endif %}
+                        <td>
+                            <a href="{{ path('photo_class_show', {'id': photo_class.id}) }}">Voir</a>
+                            <a href="{{ path('photo_class_edit', {'id': photo_class.id}) }}">Modifier</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <a href="{{ path('photo_class_new') }}">Créer une nouvelle photo de classe</a>
+    </div>
+</div>
 {% endblock %}

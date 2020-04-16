@@ -3,35 +3,39 @@
 {% block title %}Message index{% endblock %}
 
 {% block body %}
-    <h1>Message index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Msg</th>
-                <th>DateEnvoie</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for message in messages %}
-            <tr>
-                <td>{{ message.id }}</td>
-                <td>{{ message.msg }}</td>
-                <td>{{ message.DateEnvoie ? message.DateEnvoie|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('messageadmin_show', {'id': message.id}) }}">show</a>
-                    <a href="{{ path('messageadmin', {'id': message.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('messageadmin_new') }}">Create new</a>
+<div class="listeecole">
+    <div class="card blue-grey">
+        <div class="card-content white-text">
+            <h2 class="header titremessage">Message index</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Msg</th>
+                    <th>DateEnvoie</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for message in messages %}
+                <tr>
+                    <td>{{ message.id }}</td>
+                    <td>{{ message.msg }}</td>
+                    <td>{{ message.DateEnvoie ? message.DateEnvoie|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>
+                        <a href="{{ path('messageadmin_show', {'id': message.id}) }}">Voir</a>
+                        <a href="{{ path('messageadmin', {'id': message.id}) }}">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+            <a href="{{ path('messageadmin_new') }}">Créer un nouveau message</a>
+        </div>
+    </div>
+</div>
 {% endblock %}
