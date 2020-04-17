@@ -293,35 +293,4 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * @return Collection|CorrespondenceBook[]
-     */
-    public function getCorrespondenceBooks(): Collection
-    {
-        return $this->correspondenceBooks;
-    }
-
-    public function addCorrespondenceBook(CorrespondenceBook $correspondenceBook): self
-    {
-        if (!$this->correspondenceBooks->contains($correspondenceBook)) {
-            $this->correspondenceBooks[] = $correspondenceBook;
-            $correspondenceBook->setNomProf($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCorrespondenceBook(CorrespondenceBook $correspondenceBook): self
-    {
-        if ($this->correspondenceBooks->contains($correspondenceBook)) {
-            $this->correspondenceBooks->removeElement($correspondenceBook);
-            // set the owning side to null (unless already changed)
-            if ($correspondenceBook->getNomProf() === $this) {
-                $correspondenceBook->setNomProf(null);
-            }
-        }
-
-        return $this;
-    }
-
 }

@@ -21,10 +21,10 @@ public function load(ObjectManager $manager)
         $user = new User();
         $user->setEmail('user@symfony.com');
         $user->setPassword($this->passwordEncoder->encodePassword($user,'A'));
-        $user->setRoles(array('ROLE_USER'));
-        $user->setLastName('Gerald');
-        $user->setFirstName('Pierre');
-        $user->setTel('125485');
+        $user->setRoles(array('ROLE_PARENT'));
+        $user->setLastName('Geoffrey');
+        $user->setFirstName('Jean');
+        $user->setTel('0684796325');
         $manager->persist($user);
 
         $manager->flush();
@@ -35,9 +35,9 @@ public function load(ObjectManager $manager)
         $user2->setEmail('admin@symfony.com');
         $user2->setPassword($this->passwordEncoder->encodePassword($user,'admin'));
         $user2->setRoles(array('ROLE_ADMIN'));
-        $user2->setLastName('Jean');
-        $user2->setFirstName('Eude');
-        $user2->setTel('00000000');
+        $user2->setLastName('Samuelo');
+        $user2->setFirstName('Antony');
+        $user2->setTel('0695633223');
         $manager->persist($user2);
 
         $manager->flush();
